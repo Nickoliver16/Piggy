@@ -79,6 +79,37 @@ class PiggyParent(gopigo3.GoPiGo3):
         self.offset_motor_encoder(self.MOTOR_RIGHT, self.get_motor_encoder(self.MOTOR_RIGHT))
         self.set_motor_position(self.MOTOR_LEFT + self.MOTOR_RIGHT, deg)
 
+    def turn_by_deg(self, deg):
+        # Higher ordered is more complex but easier to read (Robin)
+
+        # Get our current location
+        current = self.get_heading()
+
+        # Calculate delta
+        goal = current + deg
+        # Loop around 360 marker
+        if goal > 360:
+            goal -= 360
+        elif goal < 0:
+            goal += 360
+        # Call turn to degreee on the delta
+        self.turn_to_deg(goal)
+        
+
+    def turn_to_deg(self, deg):
+        # Lower orderd (Batman)
+        # Extra credit turn left if its more efficent
+        # While loop -- keep turning until my gyro says im there
+        while abs(deg - self.get_heading()) > 5:
+            self.right(primary=60, counter=-60)
+        self.stop()
+        print("I Think ive turned correctly")
+
+        # 
+
+        pass
+
+
     def fwd(self, left=50, right=50):
         """Blindly charges your robot forward at default power which needs to be configured in child class"""
         if self.LEFT_DEFAULT and left == 50:

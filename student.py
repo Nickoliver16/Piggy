@@ -78,34 +78,42 @@ class Piggy(PiggyParent):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-
-    def.dab(self):
+        
+    def dab(self):
         #High power right for .1 seconds
-        self.right()
-        self.sleep(1)
+        self.turn_by_deg(60)
         self.servo(2000) # Look left
         self.sleep(1)
         self.stop()
-
-    def.whip(self):
+        
+    def move(self):
         #Medium power right
-        self.right()
+        self.()
+        self.servo(2000) # Look left
         self.sleep(1)
         self.left()
+        self.servo(1000) # Look right
         self.sleep(1)
         self.stop()
         pass
         #Medium power left
 
-    def.sprinkler()
+
+    def sprinkler(self):
         #small power left for .1 seconds 10 times
-        
+        for x in range(10):
+            self.turn_by_deg(5)
         pass
-        #small power right for .1 seconds 10 times
+        #small power right for .1 seconds 10 times'''
 
 
-    def.circle()
+    def circle(self)
         #High power right for 3 seconds then stop
+        for x in range(4):
+            turn_by_deg(90)
+        self.servo(2000)
+        self.servo(1500)
+        self.stop()
         pass
 
 

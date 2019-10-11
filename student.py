@@ -106,8 +106,8 @@ class Piggy(PiggyParent):
 
 
     def circle(self):
-        for x in range(4):
-            self.turn_by_deg(90)
+        self.turn_by_deg(45)
+        self.turn_by_deg(-45)
         self.servo(2000)
         self.servo(1500)
         self.stop()

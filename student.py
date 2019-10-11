@@ -17,7 +17,7 @@ class Piggy(PiggyParent):
         '''
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 80
-        self.MIDPOINT = 1500  # what servo command (1000-2000) is straight forward for your bot?
+        self.MIDPOINT = 1225  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
         
 
@@ -58,8 +58,8 @@ class Piggy(PiggyParent):
         self.dab()
         
         for x in range(3):
-            self.dab()
-            #self.whip()
+            #self.dab()
+            self.move()
             #self.sprinkler()
             #self.circle()
         
@@ -83,7 +83,6 @@ class Piggy(PiggyParent):
         #High power right for .1 seconds
         self.turn_by_deg(60)
         self.servo(2000) # Look left
-        self.sleep(1)
         self.stop()
         
     def move(self):

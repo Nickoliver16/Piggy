@@ -107,7 +107,8 @@ class Piggy(PiggyParent):
         #small power right for .1 seconds 10 times'''
 
 
-    def circle(self)
+
+    def circle(self):
         #High power right for 3 seconds then stop
         for x in range(4):
             turn_by_deg(90)

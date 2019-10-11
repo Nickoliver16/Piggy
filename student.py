@@ -88,7 +88,6 @@ class Piggy(PiggyParent):
         
     def move(self):
         #Medium power right
-        self.()
         self.servo(2000) # Look left
         self.sleep(1)
         self.left()
@@ -103,6 +102,7 @@ class Piggy(PiggyParent):
         #small power left for .1 seconds 10 times
         for x in range(10):
             self.turn_by_deg(5)
+        self.stop()
         pass
         #small power right for .1 seconds 10 times'''
 

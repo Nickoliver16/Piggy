@@ -54,8 +54,8 @@ class Piggy(PiggyParent):
     '''
 
     def dance(self):
-        #prit("I don't know how to dance. \nPlease give my programmer a zero.")
-        
+        #print("I don't know how to dance. \nPlease give my programmer a zero.")
+        self.move()
         for x in range(3):
             #self.dab()
             self.move()

@@ -86,7 +86,6 @@ class Piggy(PiggyParent):
         self.stop()
         
     def move(self):
-        #Medium power right
         self.servo(2000) # Look left
         self.sleep(1)
         self.left()
@@ -94,7 +93,6 @@ class Piggy(PiggyParent):
         self.sleep(1)
         self.stop()
         
-        #Medium power left
 
 
     def sprinkler(self):

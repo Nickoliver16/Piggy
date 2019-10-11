@@ -56,13 +56,13 @@ class Piggy(PiggyParent):
     def dance(self):
         #prit("I don't know how to dance. \nPlease give my programmer a zero.")
         self.dab()
-        '''
+        
         for x in range(3):
-            #self.dab()
+            self.dab()
             #self.whip()
             #self.sprinkler()
             #self.circle()
-        '''
+        
 
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
@@ -94,7 +94,7 @@ class Piggy(PiggyParent):
         self.servo(1000) # Look right
         self.sleep(1)
         self.stop()
-        pass
+        
         #Medium power left
 
 
@@ -103,19 +103,18 @@ class Piggy(PiggyParent):
         for x in range(10):
             self.turn_by_deg(5)
         self.stop()
-        pass
+        
         #small power right for .1 seconds 10 times'''
 
 
 
     def circle(self):
-        #High power right for 3 seconds then stop
         for x in range(4):
-            turn_by_deg(90)
+            self.turn_by_deg(90)
         self.servo(2000)
         self.servo(1500)
         self.stop()
-        pass
+        
 
 
 

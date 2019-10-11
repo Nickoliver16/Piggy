@@ -86,11 +86,7 @@ class Piggy(PiggyParent):
         self.stop()
         
 
-    def dab2(self):
-        self.turn_by_deg(60)
-        self.servo(1000)
-        self.stop()
-    
+
     def move(self):
         self.servo(2000) # Look left
         self.sleep(1)
@@ -108,6 +104,12 @@ class Piggy(PiggyParent):
         self.stop()
         
         #small power right for .1 seconds 10 times'''
+    
+    def newmove(self):
+        self.right(5)
+        self.servo(1700)
+        self.sleep(1)
+        self.servo(1100)
 
 
 

@@ -55,8 +55,8 @@ class Piggy(PiggyParent):
 
     def dance(self):
         #print("I don't know how to dance. \nPlease give my programmer a zero.")
-        self.newmove()
-        for x in range(3):
+        self.move2()
+        #for x in range(3):
             #self.dab()
             #self.move()
             #self.sprinkler()
@@ -94,7 +94,12 @@ class Piggy(PiggyParent):
         self.sleep(1)
         self.stop()
         
-
+    def move2(self):
+        self.turn_by_deg(80)
+        self.servo(1100)
+        self.turn_by_deg(-80)
+        self.servo(1900)
+        self.stop()
 
     def sprinkler(self):
         #small power left for .1 seconds 10 times

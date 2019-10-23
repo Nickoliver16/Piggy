@@ -66,6 +66,8 @@ class Piggy(PiggyParent):
             self.dab()
             self.move()
             self.move2()
+            self.newmove()
+            self.move3()
             self.circle()
         
 

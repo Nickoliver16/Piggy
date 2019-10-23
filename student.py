@@ -107,9 +107,11 @@ class Piggy(PiggyParent):
 
 
     def move(self):
-        self.servo(2000) # Look left
+        self.servo(2000)
+        self.fwd
         self.turn_by_deg(-90)
-        self.servo(1000) # Look right
+        self.servo(1000)
+        self.left
         self.turn_by_deg(90)
         self.stop()
         
@@ -122,7 +124,7 @@ class Piggy(PiggyParent):
 
     
     def newmove(self):
-        self.right(5)
+        self.turn_by_deg(180)
         self.servo(1700)
         time.sleep(.1)
         self.servo(1100)

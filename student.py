@@ -66,9 +66,9 @@ class Piggy(PiggyParent):
             self.dab()
             self.move()
             self.move2()
-            self.newmove()
             self.circle()
         
+
     def safe_to_dance(self):
         #Does 360 distance check and returns true if safe
         for x in range(4):
@@ -106,10 +106,9 @@ class Piggy(PiggyParent):
 
     def move(self):
         self.servo(2000) # Look left
-        self.sleep(1)
-        self.left()
+        self.turn_by_deg(-90)
         self.servo(1000) # Look right
-        self.sleep(1)
+        self.turn_by_deg(90)
         self.stop()
         
     def move2(self):
@@ -125,6 +124,15 @@ class Piggy(PiggyParent):
         self.servo(1700)
         self.sleep(1)
         self.servo(1100)
+        self.stop()
+
+    def move3(self):
+        self.fwd()
+        self.turn_by_deg(-90)
+        self.servo(1900)
+        self.sleep(.2)
+        self.servo(1100)
+        self.back()
         self.stop()
 
 

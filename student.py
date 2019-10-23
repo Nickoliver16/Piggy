@@ -59,7 +59,7 @@ class Piggy(PiggyParent):
         if not self.safe_to_dance():
             print ("Not safe to dance")
             return #return closes method
-        else
+        else:
             print("It's safe to dance")
 
         for x in range(1):

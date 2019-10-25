@@ -64,10 +64,10 @@ class Piggy(PiggyParent):
 
         for x in range(1):
             #self.dab()
-            #self.move()
+            self.move()
             #self.move2()
             #self.newmove()
-            self.move3()
+            #self.move3()
             #self.circle()
         
 

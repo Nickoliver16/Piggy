@@ -63,12 +63,12 @@ class Piggy(PiggyParent):
             print("It's safe to dance")
 
         for x in range(1):
-            #self.dab()
+            self.dab()
             self.move()
-            #self.move2()
-            #self.newmove()
-            #self.move3()
-            #self.circle()
+            self.move2()
+            self.newmove()
+            self.move3()
+            self.circle()
         
 
     def safe_to_dance(self):
@@ -136,6 +136,10 @@ class Piggy(PiggyParent):
         self.servo(1700)
         time.sleep(.1)
         self.servo(1100)
+        self.back
+        sleep.time(0.20)
+        self.turn_by_deg(-180)
+        self.fwd
         self.stop()
 
 

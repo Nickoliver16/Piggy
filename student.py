@@ -62,11 +62,11 @@ class Piggy(PiggyParent):
         else:
             print("It's safe to dance")
 
-        for x in range(3):
-            self.dab()
-            self.move()
-            self.move2()
-            self.newmove()
+        for x in range(1):
+            #self.dab()
+            #self.move()
+            #self.move2()
+            #self.newmove()
             self.move3()
             self.circle()
         
@@ -104,7 +104,6 @@ class Piggy(PiggyParent):
         self.servo(2000) # Look left
         self.stop()
         
-
 
     def move(self):
         self.servo(2000)

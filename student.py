@@ -68,7 +68,7 @@ class Piggy(PiggyParent):
             #self.move2()
             #self.newmove()
             self.move3()
-            self.circle()
+            #self.circle()
         
 
     def safe_to_dance(self):

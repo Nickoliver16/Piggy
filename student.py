@@ -107,11 +107,20 @@ class Piggy(PiggyParent):
 
     def move(self):
         self.servo(2000)
-        self.fwd
+        self.fwd()
         self.turn_by_deg(-90)
         self.servo(1000)
-        self.left
+        self.left()
         self.turn_by_deg(90)
+        self.back()
+        time.sleep(0.25)
+        self.servo(1000)
+        time.sleep(0.20)
+        self.servo(2000)
+        time.sleep(0.20)
+        self.servo(1000)
+        time.sleep(0.20)
+        self.servo(2000)
         self.stop()
         
     def move2(self):

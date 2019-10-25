@@ -98,19 +98,21 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
         
+    
     def dab(self):
-        #High power right for .1 seconds
+       ''' Turn right then quickly look left'''
         self.turn_by_deg(60)
-        self.servo(2000) # Look left
+        self.servo(2000) 
         self.stop()
-        
+
 
     def move(self):
+        ''' Look left got foward and turn left then look right and move right then go back. At the end turn left, right, left, and right'''
         self.servo(2000)
         self.fwd()
+        time.sleep(0.2)
         self.turn_by_deg(-90)
         self.servo(1000)
-        self.left()
         self.turn_by_deg(90)
         self.back()
         time.sleep(0.25)
@@ -122,16 +124,21 @@ class Piggy(PiggyParent):
         time.sleep(0.20)
         self.servo(2000)
         self.stop()
-        
+
+         
+
     def move2(self):
+        """Turn right and look left then sleep. Turn left and then look right"""
         self.turn_by_deg(80)
-        self.servo(1100)
-        self.turn_by_deg(-80)
         self.servo(1900)
+        time.sleep(0.2)
+        self.turn_by_deg(-80)
+        self.servo(1100)
         self.stop()
 
     
     def newmove(self):
+        """Turn right in a half circle and look left then sleep and turn right. Then go back and sleep and finally make a half circle left and go forward"""
         self.turn_by_deg(180)
         self.servo(1700)
         time.sleep(.1)
@@ -144,6 +151,7 @@ class Piggy(PiggyParent):
 
 
     def move3(self):
+        """Move foward and turn left then look left then right. Finally go back and sleep then turn right"""
         self.fwd()
         self.turn_by_deg(-90)
         self.servo(1900)
@@ -156,6 +164,7 @@ class Piggy(PiggyParent):
 
 
     def circle(self):
+        """Turn in a circle right and then turn in a circle left. End with lookin left then right"""
         for x in range(4):
             self.turn_by_deg(90)
         for x in range(4):

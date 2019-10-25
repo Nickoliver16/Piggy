@@ -136,6 +136,8 @@ class Piggy(PiggyParent):
         self.servo(1900)
         self.servo(1100)
         self.back()
+        time.sleep(.25)
+        self.turn_by_deg(90)
         self.stop()
 
 

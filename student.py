@@ -89,25 +89,45 @@ class Piggy(PiggyParent):
             self.servo(angle)
             self.scan_data[angle] = self.read_distance()
 
+    
     def obstacle_count(self):
-        print("I can't count how many obstacles are around me. Please give my programmer a zero.")
+        """does a 360 scan and returns the number of obstacles that it sees"""
+        found_something = False # Trigger
+        trigger_distance = 250
+        count = 0
+        starting_position = self.get_heading() #Write down starting position
+        self.right(primary=60, counter=-60)
+        while self.get_heading() != starting_position:
+            if self.read_distance() < trigger_distance and not found_something:
+                found_something = True
+                count += 1
+                print("\n  Found Something!! \n")
+            elif self.read_distance() > trigger_distance and found_something:
+                found_something = False
+                print("Seems I have a clear view. Resetting my counter")
+        self.stop
+        print("I found this many things: %d" % count)
+        return count
+
 
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("Wait a second. \nI can't navigate the maze at all. Please give my programmer a zero.")
-        
+        while self.read_distance() > 250:
+            self.fwd()
+            time.sleep(.01)
+        self.stop()
     
     def dab(self):
-       ''' Turn right then quickly look left'''
+       """ Turn right then quickly look left"""
         self.turn_by_deg(60)
         self.servo(2000) 
         self.stop()
 
 
     def move(self):
-        ''' Look left got foward and turn left then look right and move right then go back. At the end turn left, right, left, and right'''
+        """ Look left got foward and turn left then look right and move right then go back. At the end turn left, right, left, and right"""
         self.servo(2000)
         self.fwd()
         time.sleep(0.2)

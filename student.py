@@ -16,7 +16,7 @@ class Piggy(PiggyParent):
         MAGIC NUMBERS <-- where we hard-code our settings
         '''
         self.LEFT_DEFAULT = 80
-        self.RIGHT_DEFAULT = 60
+        self.RIGHT_DEFAULT = 70
         self.MIDPOINT = 1225  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
         

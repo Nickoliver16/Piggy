@@ -114,15 +114,18 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        while self.read_distance() > 250:
-            self.fwd()
-            time.sleep(.01)
-        self.stop()
+            
+        
+        while True: 
+            while self.read_distance() > 250:
+                self.fwd()
+                time.sleep(0.01)
+            self.turn_by_deg(45)
     
     def dab(self):
        """ Turn right then quickly look left"""
         self.turn_by_deg(60)
-        self.servo(2000) 
+        self.servo(2000)
         self.stop()
 
 

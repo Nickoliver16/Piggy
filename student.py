@@ -120,6 +120,10 @@ class Piggy(PiggyParent):
             while self.read_distance() > 250:
                 self.fwd()
                 time.sleep(0.01)
+            self.servo(2000)
+            self.read_distance()
+            self.servo(1000)
+            self.read_distance()
             self.turn_by_deg(45)
     
     def dab(self): 

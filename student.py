@@ -116,16 +116,44 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
             
         
+
         while True: 
             while self.read_distance() > 250:
                 self.fwd()
                 time.sleep(0.01)
+            self.stop()
+            self.scan()
+            # traversal
+            
+            # Robot check left and right and chooses the better way to turn
+            left_total = 0
+            left_count = 0
+            right_total = 0
+            right_count = 0
+            for ang, distance in enumerate(self.scan_data):
+                if ang < self.MIDPOINT:
+                    right_total += distance
+                    right_count += 1
+                else:
+                    left_total += distance
+                    left_count += 1
+            left_avg = left_total / left_count
+            right_avg = right_total / right_count
+            if left_avg > right_avg:
+                self.turn_by_deg(-45)
+            else:
+                self.turn_by_deg(45)
+            
             self.servo(2000)
             self.read_distance()
             self.servo(1000)
             self.read_distance()
             self.turn_by_deg(45)
-    
+
+
+
+
+
     def dab(self): 
         """ Turn right then quickly look left"""
         self.turn_by_deg(60)

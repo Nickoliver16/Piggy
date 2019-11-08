@@ -85,7 +85,7 @@ class Piggy(PiggyParent):
 
     def scan(self):
         """Sweep the servo and populate the scan_data dictionary"""
-        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 15):
+        for angle in range(self.MIDPOINT-350, self.MIDPOINT+350, 50):
             self.servo(angle)
             self.scan_data[angle] = self.read_distance()
 
@@ -133,6 +133,9 @@ class Piggy(PiggyParent):
                 self.fwd(3)
             # Reset amd turn robot to the exit
                 self.turn_by_deg(self.get_heading())
+            # Go forward and turn 45 degress after getting stuck in a corner
+                self.fwd(2)
+                self.turn_by_deg(45)
             # Robot checks left and right and chooses the better way to turn
             left_total = 0
             left_count = 0

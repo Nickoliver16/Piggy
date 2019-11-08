@@ -120,13 +120,16 @@ class Piggy(PiggyParent):
         while True:
             self.servo(self.MIDPOINT) 
             while self.read_distance() > 250:
+                corner_count = 0
                 self.fwd()
                 time.sleep(0.01)
             self.stop()
             self.scan()
             # traversal
-            
-            # Robot check left and right and chooses the better way to turn
+            # Robot checks left and right and chooses the better way to turn
+            corner_count += 1
+            if corner_count > 5:
+                self.turn_by_deg(110)
             left_total = 0
             left_count = 0
             right_total = 0

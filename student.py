@@ -126,10 +126,14 @@ class Piggy(PiggyParent):
             self.stop()
             self.scan()
             # traversal
-            # Robot checks left and right and chooses the better way to turn
+            # if the robot gets stuck in a corner for more than 5 checks it does a 180
             corner_count += 1
-            if corner_count > 5:
+            if corner_count > 3:
                 self.turn_by_deg(110)
+                self.fwd(3)
+            # Reset amd turn robot to the exit
+                self.turn_by_deg(self.get_heading())
+            # Robot checks left and right and chooses the better way to turn
             left_total = 0
             left_count = 0
             right_total = 0

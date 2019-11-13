@@ -17,6 +17,7 @@ class Piggy(PiggyParent):
         '''
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 70
+        self.SAFE_DISTANCE = 250
         self.MIDPOINT = 1225  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
         
@@ -108,7 +109,16 @@ class Piggy(PiggyParent):
         self.stop
         print("I found this many things: %d" % count)
         return count
-
+    
+    #Scan while moving
+    def quick_check(self):
+        # three quick checks
+        for ang in range(self.MIDPOINT-150, self.MIDPOINT+150, 150):
+            self.servo(ang)
+            if self.read_distance() < self.SAFE_DISTANCE:
+                return False
+        #If I get to the end that means I didn't find anything
+        return True
 
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -117,9 +127,10 @@ class Piggy(PiggyParent):
             
         
 
+
         while True:
             self.servo(self.MIDPOINT) 
-            while self.read_distance() > 250:
+            while self.quick_check():
                 corner_count = 0
                 self.fwd()
                 time.sleep(0.01)
@@ -129,13 +140,11 @@ class Piggy(PiggyParent):
             # if the robot gets stuck in a corner for more than 5 checks it does a 180
             corner_count += 1
             if corner_count > 3:
-                self.turn_by_deg(110)
+                self.turn_by_deg(180)
+                time.sleep(2)
                 self.fwd(3)
             # Reset amd turn robot to the exit
                 self.turn_by_deg(self.get_heading())
-            # Go forward and turn 45 degress after getting stuck in a corner
-                self.fwd(2)
-                self.turn_by_deg(45)
             # Robot checks left and right and chooses the better way to turn
             left_total = 0
             left_count = 0

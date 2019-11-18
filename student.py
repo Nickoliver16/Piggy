@@ -172,7 +172,7 @@ class Piggy(PiggyParent):
     def escape(self):
         # Turns robot out of a corner and then faces the exit
         self.turn_by_deg(180)
-        self.deg_fwd(270)
+        self.deg_fwd(720)
         self.turn_to_deg(self.exit_heading)
             
 

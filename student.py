@@ -17,6 +17,7 @@ class Piggy(PiggyParent):
         '''
         self.LEFT_DEFAULT = 80
         self.RIGHT_DEFAULT = 70
+        self.exit_heading = 0
         self.SAFE_DISTANCE = 250
         self.MIDPOINT = 1225  # what servo command (1000-2000) is straight forward for your bot?
         self.load_defaults()
@@ -120,7 +121,13 @@ class Piggy(PiggyParent):
         #If I get to the end that means I didn't find anything
         return True
 
+
     def nav(self):
+
+
+
+        # Assuming facing exit at the start of the maze
+        self.exit_heading = self.get_heading()
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -140,11 +147,7 @@ class Piggy(PiggyParent):
             # if the robot gets stuck in a corner for more than 5 checks it does a 180
             corner_count += 1
             if corner_count > 3:
-                self.turn_by_deg(180)
-                time.sleep(2)
-                self.fwd(3)
-            # Reset amd turn robot to the exit
-                self.turn_by_deg(self.get_heading())
+                self.escape()
             # Robot checks left and right and chooses the better way to turn
             left_total = 0
             left_count = 0
@@ -163,6 +166,14 @@ class Piggy(PiggyParent):
                 self.turn_by_deg(-45)
             else:
                 self.turn_by_deg(45)
+
+
+
+    def escape(self):
+        # Turns robot out of a corner and then faces the exit
+        self.turn_by_deg(180)
+        self.deg_fwd(270)
+        self.turn_to_deg(self.exit_heading)
             
 
     def dab(self): 

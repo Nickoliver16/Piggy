@@ -149,25 +149,27 @@ class Piggy(PiggyParent):
             if corner_count > 3:
                 self.escape()
             # Robot checks left and right and chooses the better way to turn
-            left_total = 0
-            left_count = 0
-            right_total = 0
-            right_count = 0
-            for ang, distance in self.scan_data.items():
-                if ang < self.MIDPOINT:
-                    right_total += distance
-                    right_count += 1
-                else:
-                    left_total += distance
-                    left_count += 1
-            left_avg = left_total / left_count
-            right_avg = right_total / right_count
-            if left_avg > right_avg:
-                self.turn_by_deg(-45)
+
+
+    def robot_turning(self):
+        # Robot checks left and right and chooses the better way to turn
+        left_total = 0
+        left_count = 0
+        right_total = 0
+        right_count = 0            
+        for ang, distance in self.scan_data.items():
+            if ang < self.MIDPOINT:
+                right_total += distance
+                right_count += 1
             else:
-                self.turn_by_deg(45)
-
-
+                left_total += distance
+                left_count += 1
+        left_avg = left_total / left_count
+        right_avg = right_total / right_count
+        if left_avg > right_avg:
+            self.turn_by_deg(-45)
+        else:
+            self.turn_by_deg(45)
 
     def escape(self):
         # Turns robot out of a corner and then faces the exit

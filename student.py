@@ -148,7 +148,7 @@ class Piggy(PiggyParent):
             corner_count += 1
             if corner_count > 3:
                 self.escape()
-            # Robot checks left and right and chooses the better way to turn
+            self.robot_turning()
 
 
     def robot_turning(self):

@@ -124,8 +124,6 @@ class Piggy(PiggyParent):
 
     def nav(self):
 
-
-
         # Assuming facing exit at the start of the maze
         self.exit_heading = self.get_heading()
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -164,6 +162,7 @@ class Piggy(PiggyParent):
             else:
                 left_total += distance
                 left_count += 1
+        # Finds left and right average and turns to whichever is greater
         left_avg = left_total / left_count
         right_avg = right_total / right_count
         if left_avg > right_avg:

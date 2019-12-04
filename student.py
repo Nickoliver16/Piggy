@@ -122,13 +122,14 @@ class Piggy(PiggyParent):
         #If I get to the end that means I didn't find anything
         return True
     
+    # Robot saves where it is facing and if moved goes back to that degree
     def hold_position(self):
-        self.get_heading() = start_angle
+        start_angle = self.get_heading()
         while True:
             time.sleep(0.2)
-            self.get_heading() = current_angle
+            current_angle = self.get_heading()
             if current_angle != start_angle:
-                turn_to_deg(start_angle)
+                self.turn_to_deg(start_angle)
 
 
     def nav(self):

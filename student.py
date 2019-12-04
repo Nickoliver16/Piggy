@@ -126,9 +126,9 @@ class Piggy(PiggyParent):
     def hold_position(self):
         start_angle = self.get_heading()
         while True:
-            time.sleep(0.2)
+            time.sleep(.1)
             current_angle = self.get_heading()
-            if current_angle != start_angle:
+            if abs(current_angle - start_angle) > 12:
                 self.turn_to_deg(start_angle)
 
 

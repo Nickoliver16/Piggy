@@ -161,6 +161,7 @@ class Piggy(PiggyParent):
 
 
     def path_exit(self):
+        #Save exit direction and turn to it later
         where_started = self.get_heading()
         self.turn_to_deg(self.exit_heading)
         if self.quick_check():

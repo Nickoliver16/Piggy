@@ -144,14 +144,16 @@ class Piggy(PiggyParent):
 
 
         while True:
-            self.servo(self.MIDPOINT) 
+            # Sets the servo to look straight
+            self.servo(self.MIDPOINT)
+            # Continuously checks if there is an obstacle near
             while self.quick_check():
                 corner_count = 0
                 self.fwd()
                 time.sleep(0.01)
+            # if the robot sees an obstacle it stops and scans for the best path
             self.stop()
             self.scan()
-            # traversal
             # if the robot gets stuck in a corner for more than 5 checks it does a 180
             corner_count += 1
             if corner_count > 3:

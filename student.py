@@ -153,7 +153,7 @@ class Piggy(PiggyParent):
             self.scan()
             # if the robot gets stuck in a corner for more than 5 checks it does a 180
             corner_count += 1
-            if corner_count > 3:
+            if corner_count >= 3:
                 self.escape()
             if not self.path_exit():
                 self.robot_turning()
@@ -194,7 +194,7 @@ class Piggy(PiggyParent):
     def escape(self):
         # Turns robot out of a corner and then faces the exit
         self.turn_by_deg(180)
-        self.deg_fwd(720)
+        self.deg_fwd(1080)
         self.turn_to_deg(self.exit_heading)
             
 

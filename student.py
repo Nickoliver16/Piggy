@@ -16,7 +16,7 @@ class Piggy(PiggyParent):
         MAGIC NUMBERS <-- where we hard-code our settings
         '''
         self.LEFT_DEFAULT = 80
-        self.RIGHT_DEFAULT = 70
+        self.RIGHT_DEFAULT = 65
         self.exit_heading = 0
         self.SAFE_DISTANCE = 250
         self.MIDPOINT = 1225  # what servo command (1000-2000) is straight forward for your bot?
@@ -131,7 +131,6 @@ class Piggy(PiggyParent):
             if abs(current_angle - start_angle) > 12:
                 self.turn_to_deg(start_angle)
 
-
     def nav(self):
 
         # Assuming facing exit at the start of the maze
@@ -141,8 +140,6 @@ class Piggy(PiggyParent):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
             
         
-
-
         while True:
             # Sets the servo to look straight
             self.servo(self.MIDPOINT)

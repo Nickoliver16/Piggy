@@ -40,6 +40,7 @@ class Piggy(PiggyParent):
                 "o": ("Obstacle count", self.obstacle_count),
                 "h": ("Hold position", self.hold_position),
                 "c": ("Calibrate", self.calibrate),
+                "v": ("Veer", self.slither),
                 "q": ("Quit", self.quit)
                 }
         # loop and print the menu...
@@ -130,6 +131,52 @@ class Piggy(PiggyParent):
             current_angle = self.get_heading()
             if abs(current_angle - start_angle) > 12:
                 self.turn_to_deg(start_angle)
+
+
+    
+    def slither(self):
+        """Practice a smooth vear"""
+        # Remember where robot started
+        starting_direction = self.get_heading()
+
+        # Start driving forward
+        self.set_motor_power(self.MOTOR_LEFT, self.LEFT_DEFAULT)
+        self.set_motor_power(self.MOTOR_RIGHT, self.RIGHT_DEFAULT)
+        self.fwd()
+        # Throttle / slow down left motor
+        for power in range(self.LEFT_DEFAULT, 30, -10):
+            self.set_motor_power(self.MOTOR_LEFT, power)
+            time.sleep(.5)
+        # Throttle up left while lowering right motor
+        for power in range(30, self.LEFT_DEFAULT + 1, 10):
+            self.set_motor_power(self.MOTOR_LEFT, power)
+            time.sleep(.1)
+        # Throttle down right
+        for power in range(self.right_DEFAULT, 30, -10):
+            self.set_motor_power(self.MOTOR_RIGHT, power)
+            time.sleep(.5)
+
+        #Throttle right up
+        for power in range(30, self.RIGHT_DEFAULT + 1, 10):
+            self.set_motor_power(self.MOTOR_RIGHT, power)
+            time.sleep(.1)
+
+        left_speed = self.LEFT_DEFAULT
+        right_speed = self.RIGHT_DEFAULT
+
+        # Straighten robot out
+        while self.get_heading != starting_direction:
+            # If need to veer right
+            if self.get_heading < starting_direction:
+                right_speed -= 10
+
+            # If need to veer left
+            elif self.get_heading() > starting_direction:
+                left_speed += 10
+            self.set_motor_power(self.MOTOR_LEFT, self.LEFT_speed)
+            self.set_motor_power(self.MOTOR_RIGHT, self.RIGHT_speed)
+            time.sleep(0.1)
+
 
     def nav(self):
 

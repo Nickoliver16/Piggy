@@ -152,7 +152,7 @@ class Piggy(PiggyParent):
             self.set_motor_power(self.MOTOR_LEFT, power)
             time.sleep(.1)
         # Throttle down right
-        for power in range(self.right_DEFAULT, 60, -5):
+        for power in range(self.RIGHT_DEFAULT, 60, -5):
             self.set_motor_power(self.MOTOR_RIGHT, power)
             time.sleep(.5)
 
